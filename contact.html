@@ -73,27 +73,29 @@
                          </address>
                     </div>
                     <div class="contact_form col-sm-5 col-md-5">
-                         <form>
+                    <form id="contactform" action="/getFormData" method="post" class="contact-form" name="send-contact">
                               <div class="row">
-                                   <div class="col-sm-6 col-md-6">
+								   <div class="col-sm-12 col-md-12">
                                         <label>Name</label>
-                                        <input class="form-control" type="text">
-                                   </div>
-                                   <div class="col-sm-6 col-md-6">
-                                        <label>E-mail</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" name="name">
                                    </div>
                                    <div class="col-sm-12 col-md-12">
-                                        <label>Subject</label>
-                                        <input class="form-control" type="text">
+                                        <label>Email</label>
+                                        <input class="form-control" type="text" name="email">
+                                   </div>
+								   <div class="col-sm-12 col-md-12">
+                                        <label>Phone</label>
+                                        <input class="form-control" type="text" name="phone">
                                    </div>
                                    <div class="col-sm-12 col-md-12">
                                         <label>Message</label>
-                                        <textarea rows="8" class="form-control"></textarea>
+                                        <textarea rows="8" class="form-control" name="message"></textarea>
                                    </div>
-                                   <div class="col-sm-8 col-md-8"><br/><a class="btn btn-success btn-lg"><span>Submit Message</span></a> </div>
+
+                                   <div class="col-sm-8 col-md-8"><br/><button class="btn btn-success btn-lg"><span>Submit Message</span></button> </div>
                               </div>
                          </form>
+
                     </div>
 					 <div class="contact_form col-sm-4 col-md-4">
                              
@@ -112,7 +114,6 @@
                     </div>
                </div>
           </div></section>
-
 
      <footer>
 
@@ -170,5 +171,21 @@
 <script type="text/javascript" src="js/jquery.ui.totop.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/restart_theme.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
+<script>
+		$('#contactform').submit(function(e) {
+			e.preventDefault(); // Prevents the page from refreshing
+			var $this = $(this); // `this` refers to the current form element
+			$.post(
+				$this.attr("action"), // Gets the URL to sent the post to
+				$this.serialize(), // Serializes form data in standard format
+				function(data) { /** code to handle response **/ },
+				"json" // The format the response should be in
+			);
+			
+			bootbox.alert("We appreciate your interest in Philly's Car Wash!  We will get back to you shortly.");
+		});
+</script>
+
 
 </body></html>

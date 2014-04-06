@@ -4,16 +4,16 @@ app.use(express.static(__dirname ));
 
 app.use(express.bodyParser());
 
-var postmark = require("postmark")("6d3c5ce6-1ce8-4906-b426-05eeba4fd1e2")
+var postmark = require("postmark")("f403df90-28cf-4da4-9819-eaa0773a7b83")
 
 
 
 app.post('/getFormData', function(req, res) {
   postmark.send({
-    "From": "email@plasmagfx.com",
+    "From": "email@plasmascape.com",
     "To": "inquire@plasmasgfx.com",
-    "Subject": "EMAIL FROM PLASMAGFX",
-    "TextBody": new String('From: ' + req.body.name + '.\n\rEmail: ' + req.body.email + '.\n\rPhone: ' + req.body.phone + '.\n\rSubject: ' + req.body.subject + '.\n\rMessage: ' + req.body.message)
+    "Subject": "EMAIL FROM PHILLYS WEB SITE",
+    "TextBody": new String('From: ' + req.body.name + '.\n\rEmail: ' + req.body.email  + '.\n\rSubject: ' + req.body.phone + '.\n\rMessage: ' + req.body.message)
 	}, function(error, success) {
     if(error) {
         res.send("We have had technical difficulties and we regret to say you email hasn't been delivered to PlasmaGFX");
