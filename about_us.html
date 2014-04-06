@@ -124,7 +124,7 @@
                     
                
      
-      <footer>
+     <footer>
 
           <section id="footer_teasers_wrapper">
                <div class="container">
@@ -147,13 +147,13 @@
                          </div>
                          <div class="footer_teaser col-sm-4 col-md-4" id="latest-flickr-images">
                               <h3>Sign-up to Receive Money-Saving Coupons</h3>
-							<form>
+                    <form id="emailform" action="/getEmailData" method="post" class="contact-form" name="send-email">
                               <div class="row">
                                  <div class="col-sm-12 col-md-12">
                                      <label>E-mail</label>
-                                     <input class="form-control" type="text">
+                                     <input class="form-control" type="text" name="email">
                                  </div>
-                                 <div class="col-sm-8 col-md-8"><br/><a class="btn btn-success btn-lg"><span>Submit</span></a> </div>
+                                   <div class="col-sm-8 col-md-8"><br/><button class="btn btn-success btn-lg"><span>Submit</span></button> </div>
                               </div>
 							</form>
                          </div>
@@ -180,5 +180,20 @@
 <script type="text/javascript" src="js/jquery.ui.totop.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script type="text/javascript" src="js/restart_theme.js"></script>
+<script>
+
+		$('#emailform').submit(function(e) {
+			e.preventDefault(); // Prevents the page from refreshing
+			var $this = $(this); // `this` refers to the current form element
+			$.post(
+				$this.attr("action"), // Gets the URL to sent the post to
+				$this.serialize(), // Serializes form data in standard format
+				function(data) { /** code to handle response **/ },
+				"json" // The format the response should be in
+			);
+			
+			bootbox.alert("Your Email has been added to the Philly's Car Wash Newsletter Mailing List!");
+		});
+</script>
 
 </body></html>
