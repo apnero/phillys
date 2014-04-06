@@ -7,15 +7,7 @@ app.use(express.static(__dirname ));
 app.use(express.bodyParser());
 
 var postmark = require("postmark")("f403df90-28cf-4da4-9819-eaa0773a7b83")
-var client2 = new pg.Client(process.env.DATABASE_URL);
 
-pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  client.query('SELECT * FROM emails', function(err, result) {
-    done();
-    if(err) return console.error(err + 'in where');
-    console.log(result.rows);
-  });
-});
 
 app.post('/getFormData', function(req, res) {
   postmark.send({
@@ -36,7 +28,7 @@ app.post('/getFormData', function(req, res) {
 app.post('/getEmailData', function(req, res) {
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  client.query("INSERT INTO emails VALUES ($1)", ['alread'], function(err, result) {
+	  client.query("INSERT INTO emails VALUES ($1)", [req.body.email], function(err, result) {
 		done();
 		if(err) return console.error(err + 'in here');
 		console.log(result.rows);
