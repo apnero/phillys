@@ -35,7 +35,7 @@ app.post('/getFormData', function(req, res) {
 app.post('/getEmailData', function(req, res) {
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-	  client.query('INSERT INTO emails VALUES ("req.body.email");', function(err, result) {
+	  client.query("INSERT INTO emails VALUES ('a@bbbb.com');", function(err, result) {
 		done();
 		if(err) return console.error(err + 'in here');
 		console.log(result.rows);
