@@ -138,7 +138,7 @@
                          </div>
                          <div class="footer_teaser col-sm-4 col-md-4" id="latest-flickr-images">
                               <h3>Sign-up to Receive Money-Saving Coupons</h3>
-                    <form id="emailform" action="/getEmailData" method="post" class="contact-form" name="send-email">
+                    <form id="emailform2" action="/getEmailData" method="post" class="contact-form" name="send-email">
                               <div class="row">
                                  <div class="col-sm-12 col-md-12">
                                      <label>E-mail</label>
@@ -198,6 +198,20 @@
 			
 			bootbox.alert("Your Email has been added to the Philly's Car Wash Newsletter Mailing List!");
 		});
+		
+		$('#emailform2').submit(function(e) {
+			e.preventDefault(); // Prevents the page from refreshing
+			var $this = $(this); // `this` refers to the current form element
+			$.post(
+				$this.attr("action"), // Gets the URL to sent the post to
+				$this.serialize(), // Serializes form data in standard format
+				function(data) { /** code to handle response **/ },
+				"json" // The format the response should be in
+			);
+			
+			bootbox.alert("Your Email has been added to the Philly's Car Wash Newsletter Mailing List!");
+		});
+		
 </script>
 
 
