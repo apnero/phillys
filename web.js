@@ -12,8 +12,8 @@ var postmark = require("postmark")("f403df90-28cf-4da4-9819-eaa0773a7b83")
 app.post('/getFormData', function(req, res) {
   postmark.send({
     "From": "email@plasmascape.com",
-    "To": "andrew@plasmascape.com",
-    "Subject": "EMAIL FROM PHILLYS WEB SITE",
+    "To": "jjfss396@aol.com",
+    "Subject": "EMAIL FROM SOAPY JOES Car Wash WEB SITE",
     "TextBody": new String('From: ' + req.body.name + '.\n\rEmail: ' + req.body.email  + '.\n\rSubject: ' + req.body.phone + '.\n\rMessage: ' + req.body.message)
 	}, function(error, success) {
     if(error) {
